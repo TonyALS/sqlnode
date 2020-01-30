@@ -10,6 +10,13 @@ class User extends Model {
       sequelize: connection
     });
   }
+
+  static associate(models) {
+    //  No hasMany a foreignKey é a coluna em que está armazenada a chave dentro
+    //  do model que ela referencia, no caso Address tem a coluna 'user_id' 
+    //  com o id do usuário.
+    this.hasMany(models.Address, { foreignKey: 'user_id', as: 'addresses' });
+  }
 }
 
 module.exports = User;
