@@ -16,6 +16,12 @@ class User extends Model {
     //  do model que ela referencia, no caso Address tem a coluna 'user_id' 
     //  com o id do usuário.
     this.hasMany(models.Address, { foreignKey: 'user_id', as: 'addresses' });
+
+    //  Users tem um relacionamento N:N com techs e por isso usamos o belongsToMany:
+    this.belongsToMany(models.Tech, { 
+      foreignKey: 'user_id', 
+      through: 'users_techs', 
+      as: 'techs'});
   }
 }
 
