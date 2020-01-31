@@ -20,7 +20,7 @@ class User extends Model {
     //  Users tem um relacionamento N:N com techs e por isso usamos o belongsToMany:
     this.belongsToMany(models.Tech, { 
       foreignKey: 'user_id', 
-      through: 'users_techs', 
+      through: 'user_techs', 
       as: 'techs'});
   }
 }
